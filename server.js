@@ -8,15 +8,12 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/workout_tracker",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 app.use(require("./routes/apiRoutes"));
 app.use(require("./routes/htmlRoutes"));
